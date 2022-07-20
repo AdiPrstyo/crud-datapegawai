@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <nav class="navbar navbar-light justify-content-between" style="background-color: #098a59;">
+    <a class="navbar-brand m-0 font-weight-bold" style="color: #ddd6cb;">Database Pegawai</a>
+    <a href="inputdata/" class="btn mb-2" style="background-color:#04b613; color:#f5f1f1"><i class="fa fa-user-plus"></i> Tambah Data Pegawai</a>
+  </nav>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  {% load static %}
+  <title>Data Pegawai</title>
+  <link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'datatable/datatables.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body style="background-color:#488a8a">
+  <br> </br>
+  <div class="container">
+    <div class="card shadow-sm mb-4" style="width: 100%;">
+      <div class="card-header py-3"">
+        <h6 class="m-0 font-weight-bold">List Daftar Pegawai</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr style="text-align: center;">
+                <th style="width: 20px">No.</th>
+                <th>Nama Pegawai</th>
+                <th style="width: 90px;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for tampilkandatanya in tampilkandata %}
+              <tr>
+                <td style="text-align: center">{{ forloop.counter }}</td>
+                <td>{{ tampilkandatanya.nama }}</td>
+                <td style="text-align: center">
+                  <a href="/lihatdata/{{ tampilkandatanya.id }}" class="btn btn-warning btn-sm" title="Lihat Data"><i
+                      class="fas fa-paper-plane"></i></a>                
+                  <a href="/editdata/{{ tampilkandatanya.id }}" class="btn btn-primary btn-sm" title="Ubah Data"><i
+                    class="fas fa-wrench"></i></a>
+                  <a href="/hapusdata/{{ tampilkandatanya.id }}" class="btn btn-danger btn-sm" title="Hapus Data"><i
+                      class="fas fa-eraser"></i></a>   
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <footer class="mt-5 mb-3">
+      <div class="container my-auto">
+        <div class="text-center my-auto" id="footer">
+          <span>developed by <a href="https://github.com/AdiPrstyo" target="_blank" style="color: #ece916;"><b><u>ADI TRI PRASETYO</u></b><a></span>
+        </div>
+      </div>
+    </footer> 
+  </div>
+ <script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
+ <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+ <script src="{% static 'datatable/datatables.min.js' %}"></script> 
+ <script>
+   $(document).ready(function () {
+     $('#dataTable').DataTable();
+   });
+ </script>
+
+</body>
+
+</html>

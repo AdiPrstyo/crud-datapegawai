@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <nav class="navbar navbar-light justify-content-between" style="background-color: #098a59;">
+    <a href="/" class="navbar-brand m-0 font-weight-bold" style="color: #f5eff3;">Database Pegawai</a>
+  </nav>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  {% load static %}
+  <title>Perubahan Data Pegawai</title>
+  <link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body style="background-color:#d2d3d3">
+  <br> </br>
+
+  <div class="container">
+    <form method="POST" action="/updatedata/{{ editdatanya.id }}">
+      {% csrf_token %}
+      <div class="card shadow-sm mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold">Edit Data Pegawai</h6>
+        </div>
+        <div class="card-body">
+          <label>Nama Pegawai</label>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-user" placeholder="Masukkan Nama Pegawai" name="nama"
+              id="id_nama" value="{{ editdatanya.nama }}">
+          </div>
+          <label>NIP Pegawai</label>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-user" placeholder="Masukkan NIP Pegawai" name="nip"
+              id="id_nip" value="{{ editdatanya.nip }}" maxlength="11">
+          </div>
+          <label>Divisi Pekerjaan</label>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-user" placeholder="Masukkan Divisi Pekerjaan"
+              name="divisi" id="id_divisi" value="{{ editdatanya.divisi }}">
+          </div>
+          <label>Alamat</label>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-user" placeholder="Masukkan Asal Alamat Pegawai"
+              name="alamat" id="id_alamat" value="{{ editdatanya.alamat }}">
+          </div>
+          <label>Jenis Kelamin</label>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="gender" value="Pria" id="id_gender" checked>
+            <label for="Pria">Pria</label><br>
+            <input type="radio" class="form-check-input" name="gender" value="Wanita" id="id_gender">
+            <label for="Wanita">Wanita</label>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Simpan Data</button>
+          <a href="/" class="btn btn-danger">Batal</a>
+        </div>
+      </div>
+    </form>
+    <footer class="mt-5 mb-3">
+      <div class="container my-auto">
+        <div class="text-center my-auto">
+          <span>developed by <a href="https://github.com/AdiPrstyo" target="_blank" style="color: #ee4b0b;"><b><u>ADI TRI PRASETYO</u></b><a></span>
+        </div>
+      </div>
+    </footer> 
+  </div>
+
+  <script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
